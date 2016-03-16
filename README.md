@@ -1,5 +1,7 @@
 # Watchr
 
+[![Build Status](https://travis-ci.org/anthonygelibert/watchr.svg?branch=master)](https://travis-ci.org/anthonygelibert/watchr)
+
 *Watchr* is high level abstraction over JDK 7's
  [WatchService](http://docs.oracle.com/javase/7/docs/api/java/nio/file/WatchService.html). It
  registers `WatchService` in separate thread and watch for changes in
