@@ -2,6 +2,9 @@ package com.binarysanctuary.watchr.cmd;
 
 import com.binarysanctuary.watchr.Watchr;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.WatchEvent;
@@ -13,6 +16,8 @@ import java.nio.file.WatchEvent;
  * @version 1.0.0
  */
 public final class WatchrMain {
+    /** Logger. */
+    private static final Logger LOGGER = LogManager.getLogger(WatchrMain.class);
 
     /** Watch the given folders. */
     public static void main(final String... args) throws IOException, InterruptedException {
@@ -25,7 +30,7 @@ public final class WatchrMain {
             }, args);
 
             System.in.read();
-            System.out.println("Interrupting....");
+            LOGGER.fatal("Interrupting...."); // NON-NLS
             thread.interrupt();
             thread.join();
         }
