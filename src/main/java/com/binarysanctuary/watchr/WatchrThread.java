@@ -44,7 +44,7 @@ public final class WatchrThread extends Thread {
     /** Boolean to control the thread. */
     private volatile boolean m_isRunning = true;
 
-    /** Constructor with the callback and the dirs as {@link java.nio.file.Path}. */
+    /** Constructor with the callback and the dirs as {@link Path}. */
     public WatchrThread(final OnChangeCallback callback, final Path... dirs) throws IOException {
         m_callback = callback;
         m_dirs = dirs.clone();

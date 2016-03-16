@@ -3,11 +3,12 @@ package com.binarysanctuary.watchr;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.WatchService;
 import java.util.Arrays;
 
 /**
  * Watch for changes in specified set of directories. It is a high level abstraction
- * over JDK 7 {@link java.nio.file.WatchService}.
+ * over JDK 7 {@link WatchService}.
  * <p>
  * The <tt>Watchr</tt> setups thread that is responsible for watching for changes in
  * specified directories and invokes callback whenever change is noticed. <tt>Watchr</tt>
@@ -24,7 +25,7 @@ public final class Watchr {
     /**
      * Call <i>callback</i> on each events in the <i>dirs</i>.
      *
-     * @see com.binarysanctuary.watchr.OnChangeCallback
+     * @see OnChangeCallback
      */
     public static WatchrThread watch(final OnChangeCallback callback, final String... dirs) throws IOException {
         return watch(callback, Paths.get(dirs[0], Arrays.copyOfRange(dirs, 1, dirs.length)));
@@ -33,7 +34,7 @@ public final class Watchr {
     /**
      * Call <i>callback</i> on each events in the <i>dirs</i>.
      *
-     * @see com.binarysanctuary.watchr.OnChangeCallback
+     * @see OnChangeCallback
      */
     public static WatchrThread watch(final OnChangeCallback callback, final Path... dirs) throws IOException {
         final WatchrThread thread = new WatchrThread(callback, dirs);
