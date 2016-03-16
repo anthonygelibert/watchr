@@ -87,10 +87,10 @@ public final class WatchrThread implements Runnable {
             }
         }
         catch (final IOException e) {
-            LOGGER.fatal("Watchr thread I/O exception", e);
+            LOGGER.fatal("Watchr thread I/O exception", e); /* NON-NLS */
         }
         catch (final InterruptedException ignore) {
-            LOGGER.info("Watchr thread interrupted");
+            LOGGER.info("Watchr thread interrupted"); /* NON-NLS */
         }
         finally {
             try { m_watchService.close(); }
@@ -98,15 +98,19 @@ public final class WatchrThread implements Runnable {
         }
     }
 
+    /** Interrupt the WatchrThread as soon it becomes idle. */
     public void interrupt() {
         m_isRunning = false;
     }
 
     @Override
     public String toString() {
-        return String.format(
-                "WatchrThread{m_callback=%s, m_dirs=%s, m_watchService=%s, m_dirsMapping=%s, m_isRunning=%s}",
-                m_callback, Arrays.toString(m_dirs), m_watchService, m_dirsMapping, m_isRunning);
+        return String.format("WatchrThread{callback=%s, dirs=%s, watchService=%s, dirsMapping=%s, isRunning=%s}",
+                             m_callback,
+                             Arrays.toString(m_dirs),
+                             m_watchService,
+                             m_dirsMapping,
+                             m_isRunning);
     }
 
     private void register(final Path... dirs) throws IOException {
