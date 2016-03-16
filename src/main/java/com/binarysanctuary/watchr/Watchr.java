@@ -27,7 +27,7 @@ public final class Watchr {
      *
      * @see OnChangeCallback
      */
-    public static WatchrThread watch(final OnChangeCallback callback, final String... dirs) throws IOException {
+    public static Thread watch(final OnChangeCallback callback, final String... dirs) throws IOException {
         return watch(callback, Paths.get(dirs[0], Arrays.copyOfRange(dirs, 1, dirs.length)));
     }
 
@@ -36,8 +36,8 @@ public final class Watchr {
      *
      * @see OnChangeCallback
      */
-    public static WatchrThread watch(final OnChangeCallback callback, final Path... dirs) throws IOException {
-        final WatchrThread thread = new WatchrThread(callback, dirs);
+    public static Thread watch(final OnChangeCallback callback, final Path... dirs) throws IOException {
+        final Thread thread = new Thread(new WatchrThread(callback, dirs));
         thread.setDaemon(true);
         thread.setName("Watchr Monitoring Thread"); /* NON-NLS */
         thread.start();

@@ -30,7 +30,7 @@ import static java.nio.file.StandardWatchEventKinds.ENTRY_MODIFY;
  * @author Michal Orman
  * @version 1.0.0
  */
-public final class WatchrThread extends Thread {
+public final class WatchrThread implements Runnable {
     /** Logger. */
     private static final Logger LOGGER = LogManager.getLogger(WatchrThread.class);
     /** Callback. */

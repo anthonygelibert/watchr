@@ -1,7 +1,6 @@
 package com.binarysanctuary.watchr.cmd;
 
 import com.binarysanctuary.watchr.Watchr;
-import com.binarysanctuary.watchr.WatchrThread;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -18,10 +17,10 @@ public final class WatchrMain {
     /** Watch the given folders. */
     public static void main(final String... args) throws IOException, InterruptedException {
         if (args.length > 0) {
-            final WatchrThread thread = Watchr.watch((dir, events) -> {
-                for (WatchEvent<?> event : events) {
-                    Path file = dir.resolve((Path) event.context());
-                    System.out.printf("Notified: %s on file: %s%n", event.kind(), file);
+            final Thread thread = Watchr.watch((dir, events) -> {
+                for (final WatchEvent<?> event : events) {
+                    final Path file = dir.resolve((Path) event.context());
+                    LOGGER.info("Notified: {} on file: {}", event.kind(), file); // NON-NLS
                 }
             }, args);
 
