@@ -194,16 +194,6 @@
                                 <requireNoRepositories>
                                     <message>Best Practice is to never define repositories in pom.xml (use a repository manager instead)</message>
                                 </requireNoRepositories>
-                                <!-- Check the latest maven version (30/12/2014) and allow all the micro -->
-                                <requireMavenVersion>
-                                    <message>Please install the latest Maven.</message>
-                                    <version>[3.2.5,3.3)</version>
-                                </requireMavenVersion>
-                                <!-- Check the latest JDK (30/12/2014) and allow all the micro -->
-                                <requireJavaVersion>
-                                    <message>Please install the latest JDK.</message>
-                                    <version>[1.8.0-25,1.9)</version>
-                                </requireJavaVersion>
                                 <!-- Check the plugin's version definitions -->
                                 <requirePluginVersions>
                                     <message>Best Practice is to always define plugin versions!</message>
